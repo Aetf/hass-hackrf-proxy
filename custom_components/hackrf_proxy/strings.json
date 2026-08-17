@@ -1,0 +1,26 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to a hackrf-proxyd daemon",
+        "description": "The host running hackrf-proxyd, which owns the radio.",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the daemon. Check that it is running and that the host and port are right.",
+      "unsupported_version": "The daemon speaks a different protocol version than this integration. Update whichever is older."
+    },
+    "abort": {
+      "already_configured": "This daemon is already configured."
+    }
+  },
+  "exceptions": {
+    "transmit_failed": {
+      "message": "The daemon could not transmit: {error}"
+    }
+  }
+}
