@@ -41,12 +41,16 @@ class HackrfProxyTransmitter(RadioFrequencyTransmitterEntity):
         """Initialize the entity."""
         self._client: ProxyClient = entry.runtime_data
         self._attr_unique_id = entry.entry_id
+        # No configuration_url: the daemon speaks WebSocket and serves no page,
+        # and Home Assistant only accepts http(s) there — a link to
+        # `http://host:8765` would just fail a handshake in the browser.
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
             name=entry.title,
             manufacturer="Great Scott Gadgets",
-            model=self._client.device or "HackRF",
-            configuration_url=self._client.url,
+            model="HackRF One",
+            sw_version=self._client.daemon_version,
+            hw_version=self._client.device,
         )
 
     @property
