@@ -22,5 +22,45 @@
     "transmit_failed": {
       "message": "The daemon could not transmit: {error}"
     }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connection": {
+        "name": "Connection"
+      }
+    },
+    "sensor": {
+      "radio_state": {
+        "name": "Radio",
+        "state": {
+          "receiving": "Receiving",
+          "transmitting": "Transmitting",
+          "idle": "Idle",
+          "faulted": "Faulted",
+          "disconnected": "Disconnected"
+        }
+      },
+      "last_frame": {
+        "name": "Last frame heard"
+      },
+      "connected_since": {
+        "name": "Connected since"
+      },
+      "disconnections": {
+        "name": "Disconnections"
+      },
+      "frames_received": {
+        "name": "Frames received"
+      },
+      "transmissions": {
+        "name": "Transmissions"
+      },
+      "radio_faults": {
+        "name": "Radio faults"
+      },
+      "discarded_bursts": {
+        "name": "Discarded bursts"
+      }
+    }
   }
 }

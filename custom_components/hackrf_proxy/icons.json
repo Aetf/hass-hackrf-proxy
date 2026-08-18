@@ -1,0 +1,43 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "connection": {
+        "default": "mdi:lan-connect",
+        "state": {
+          "off": "mdi:lan-disconnect"
+        }
+      }
+    },
+    "sensor": {
+      "radio_state": {
+        "default": "mdi:radio-tower",
+        "state": {
+          "transmitting": "mdi:antenna",
+          "faulted": "mdi:radio-tower-off",
+          "disconnected": "mdi:radio-tower-off"
+        }
+      },
+      "last_frame": {
+        "default": "mdi:radio-handheld"
+      },
+      "connected_since": {
+        "default": "mdi:clock-start"
+      },
+      "disconnections": {
+        "default": "mdi:lan-disconnect"
+      },
+      "frames_received": {
+        "default": "mdi:radio-handheld"
+      },
+      "transmissions": {
+        "default": "mdi:antenna"
+      },
+      "radio_faults": {
+        "default": "mdi:usb-port"
+      },
+      "discarded_bursts": {
+        "default": "mdi:waveform"
+      }
+    }
+  }
+}

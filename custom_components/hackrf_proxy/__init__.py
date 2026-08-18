@@ -19,7 +19,11 @@ from .const import SIGNAL_RX_FRAME
 
 type HackrfProxyConfigEntry = ConfigEntry[ProxyClient]
 
-PLATFORMS: list[Platform] = [Platform.RADIO_FREQUENCY]
+PLATFORMS: list[Platform] = [
+    Platform.BINARY_SENSOR,
+    Platform.RADIO_FREQUENCY,
+    Platform.SENSOR,
+]
 
 #: How long to wait for the daemon on setup before deciding it is not ready.
 SETUP_TIMEOUT = 10.0
