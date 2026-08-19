@@ -14,7 +14,7 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import HackrfProxyConfigEntry
-from .client import ProxyClient, ProxyError
+from hackrf_proxy_client import ProxyClient, ProxyError
 from .const import DOMAIN, FREQUENCY_RANGE
 
 _LOGGER = logging.getLogger(__name__)

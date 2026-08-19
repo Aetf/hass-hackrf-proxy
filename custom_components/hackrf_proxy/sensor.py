@@ -23,7 +23,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import HackrfProxyConfigEntry
-from .client import ProxyClient
+from hackrf_proxy_client import ProxyClient
 from .const import DOMAIN
 from .coordinator import ProxyCoordinator
 from .entity import ProxyDiagnosticEntity

@@ -8,7 +8,7 @@ from homeassistant.core import callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import Entity
 
-from .client import ProxyClient
+from hackrf_proxy_client import ProxyClient
 from .const import DOMAIN
 
 

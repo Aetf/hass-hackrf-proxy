@@ -12,7 +12,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import HackrfProxyConfigEntry
-from .client import ProxyClient
+from hackrf_proxy_client import ProxyClient
 from .entity import ProxyDiagnosticEntity
 
 

@@ -14,7 +14,7 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 
-from .client import ProxyClient
+from hackrf_proxy_client import ProxyClient
 from .const import SIGNAL_RX_FRAME
 
 type HackrfProxyConfigEntry = ConfigEntry[ProxyClient]
