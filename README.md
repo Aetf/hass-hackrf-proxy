@@ -22,10 +22,14 @@ this integration pip-installs via its manifest.
 
 ## Installing
 
+[![Open this repository inside HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Aetf&repository=hass-hackrf-proxy&category=integration)
+
 Via [HACS](https://hacs.xyz/): add `https://github.com/Aetf/hass-hackrf-proxy`
 as a custom repository (category: integration), install, and restart Home
 Assistant. Manual alternative: copy `custom_components/hackrf_proxy/` into
 your config's `custom_components/` and restart.
+
+[![Start the config flow in your Home Assistant](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=hackrf_proxy)
 
 Then add **HackRF Proxy** from Settings → Devices & services. It asks for the
 daemon's host and port, and refuses to finish if it cannot get a `status`
