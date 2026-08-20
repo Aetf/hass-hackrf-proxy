@@ -1,13 +1,19 @@
 {
   "domain": "hackrf_proxy",
   "name": "HackRF Proxy",
-  "codeowners": ["@Aetf"],
+  "codeowners": [
+    "@Aetf"
+  ],
   "config_flow": true,
-  "dependencies": ["radio_frequency"],
+  "dependencies": [
+    "radio_frequency"
+  ],
   "documentation": "https://github.com/Aetf/hass-hackrf-proxy",
   "integration_type": "device",
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/Aetf/hass-hackrf-proxy/issues",
-  "requirements": ["hackrf-proxy-client==0.1.0"],
+  "requirements": [
+    "hackrf-proxy-client==0.1.0"
+  ],
   "version": "0.1.0"
 }
