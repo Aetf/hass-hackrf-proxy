@@ -129,6 +129,13 @@ Roadmap, in order:
 
 [architecture #1365]: https://github.com/home-assistant/architecture/discussions/1365
 
+## Trademarks
+
+Independent and unofficial: not affiliated with, endorsed by, or sponsored by
+Great Scott Gadgets. "HackRF" and "HackRF One" are their trademarks, used here
+only to say which radio this integration works with. The integration's own
+brand image is original artwork, not theirs.
+
 ## License
 
 MIT OR Apache-2.0, at your option.
