@@ -2,3 +2,16 @@
 testpaths = ["tests"]
 asyncio_mode = "auto"
 pythonpath = ["."]
+
+[tool.basedpyright]
+include = ["custom_components", "tests"]
+typeCheckingMode = "strict"
+# basedpyright's opinions beyond pyright strict; Home Assistant's own APIs
+# keep Any at several boundaries.
+reportAny = false
+reportExplicitAny = false
+reportUnusedCallResult = false
+# Home Assistant's entity model overrides attribute-backed fields with
+# properties by design, and several third-party deps ship no stubs.
+reportIncompatibleVariableOverride = false
+reportMissingTypeStubs = false

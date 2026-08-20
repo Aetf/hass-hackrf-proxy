@@ -195,6 +195,7 @@ class ProxyCounter(CoordinatorEntity[ProxyCoordinator], SensorEntity):
         `TOTAL_INCREASING` handles: a drop is read as a new run rather than as
         the number going backwards.
         """
-        if self.coordinator.data is None:
+        # Typed non-optional upstream, but None before the first refresh.
+        if self.coordinator.data is None:  # pyright: ignore[reportUnnecessaryComparison]
             return None
         return self.coordinator.data.get("counters", {}).get(self._field)

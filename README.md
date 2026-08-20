@@ -1,5 +1,8 @@
 # HackRF Proxy for Home Assistant
 
+[![CI](https://github.com/Aetf/hass-hackrf-proxy/actions/workflows/ci.yml/badge.svg)](https://github.com/Aetf/hass-hackrf-proxy/actions/workflows/ci.yml)
+[![HACS](https://img.shields.io/badge/HACS-custom-41BDF5)](https://hacs.xyz/)
+
 A custom integration that presents a [hackrf-proxyd](https://github.com/Aetf/hackrf-proxy)
 daemon as a `radio_frequency` transmitter entity. It forwards raw OOK timings
 and nothing else, so any consumer for any appliance on any frequency the
@@ -58,7 +61,7 @@ to a wedged daemon would otherwise look healthy.
 Nine entities, all in the diagnostic category, and the split between them is
 the design rather than an accident of where the data happened to live.
 
-| entity | source | during an outage |
+| Entity | Source | During an outage |
 |--------|--------|------------------|
 | `binary_sensor` connectivity | the client | readable |
 | `sensor` enum — what the radio is doing | pushed `device_state` | reads `disconnected` |
@@ -78,10 +81,10 @@ daemon look identical from there and want completely different responses.
 `disconnected` is not a state the daemon can report — reporting requires a
 connection — so the client supplies it.
 
-**Last frame heard is the receive path's only witness.** A receiver that has
+**Last frame heard is the RX path's only witness.** A receiver that has
 gone deaf — the radio moved, the antenna came off, the gain is wrong — looks
 from every other reading exactly like a quiet room. It counts every burst the
-detector sliced, not only frames a consumer recognised, so it stays honest
+detector sliced, not only frames a consumer recognized, so it stays honest
 about the radio rather than about any one consumer.
 
 Only `status` is polled, once a minute, and it is answered from the daemon's

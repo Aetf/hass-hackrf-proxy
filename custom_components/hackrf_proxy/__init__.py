@@ -7,6 +7,8 @@ build the timings, this forwards them to the radio.
 
 from __future__ import annotations
 
+from typing import Any
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST, CONF_PORT, Platform
 from homeassistant.core import HomeAssistant
@@ -32,7 +34,7 @@ SETUP_TIMEOUT = 10.0
 async def async_setup_entry(hass: HomeAssistant, entry: HackrfProxyConfigEntry) -> bool:
     """Set up HackRF Proxy from a config entry."""
 
-    def forward_rx_frame(frame: dict) -> None:
+    def forward_rx_frame(frame: dict[str, Any]) -> None:
         # Interim bridge until an upstream receiver platform exists: consumers
         # subscribe to this signal to see what the radio hears. The payload is
         # the daemon's `rx_frame` verbatim, which is deliberately the shape a

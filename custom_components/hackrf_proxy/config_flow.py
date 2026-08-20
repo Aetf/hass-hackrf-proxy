@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from typing import Any, override
 
 import aiohttp
@@ -9,6 +10,7 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST, CONF_PORT
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from hackrf_proxy_client import PROTOCOL_VERSION
@@ -58,20 +60,24 @@ class HackrfProxyConfigFlow(ConfigFlow, domain=DOMAIN):
         )
 
 
-async def _async_probe(hass: Any, host: str, port: int) -> dict[str, Any] | None:
+async def _async_probe(hass: HomeAssistant, host: str, port: int) -> dict[str, Any] | None:
     """Ask a daemon for its status, or return None if it cannot be reached.
 
     Deliberately a plain request rather than starting the reconnecting client:
-    a config flow should fail fast and say so, not sit in a retry loop.
+    a config flow should fail fast and say so, not sit in a retry loop. The
+    timeout bounds the whole probe, handshake included.
     """
     session = async_get_clientsession(hass)
     try:
-        async with session.ws_connect(f"ws://{host}:{port}", timeout=10) as socket:
+        async with (
+            asyncio.timeout(10),
+            session.ws_connect(f"ws://{host}:{port}") as socket,
+        ):
             await socket.send_json({"v": PROTOCOL_VERSION, "id": "probe", "type": "status"})
             async for message in socket:
                 if message.type is not aiohttp.WSMsgType.TEXT:
                     continue
-                payload = message.json()
+                payload: dict[str, Any] = message.json()
                 if payload.get("id") == "probe":
                     return payload
     except (aiohttp.ClientError, OSError, TimeoutError, ValueError):
