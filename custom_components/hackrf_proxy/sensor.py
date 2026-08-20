@@ -11,6 +11,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import override
 
+from hackrf_proxy_client import ProxyClient
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -23,7 +24,6 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import HackrfProxyConfigEntry
-from hackrf_proxy_client import ProxyClient
 from .const import DOMAIN
 from .coordinator import ProxyCoordinator
 from .entity import ProxyDiagnosticEntity

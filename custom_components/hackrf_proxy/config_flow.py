@@ -7,13 +7,12 @@ from typing import Any, override
 
 import aiohttp
 import voluptuous as vol
-
+from hackrf_proxy_client import PROTOCOL_VERSION
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from hackrf_proxy_client import PROTOCOL_VERSION
 from .const import DEFAULT_PORT, DOMAIN
 
 STEP_USER_SCHEMA = vol.Schema(

@@ -13,14 +13,13 @@ touches neither the radio nor the air.
 
 from __future__ import annotations
 
-from datetime import timedelta
 import logging
+from datetime import timedelta
 from typing import Any
 
+from hackrf_proxy_client import ProxyClient, ProxyError
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-
-from hackrf_proxy_client import ProxyClient, ProxyError
 
 _LOGGER = logging.getLogger(__name__)
 

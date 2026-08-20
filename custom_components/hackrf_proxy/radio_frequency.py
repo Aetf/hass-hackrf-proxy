@@ -5,16 +5,15 @@ from __future__ import annotations
 import logging
 from typing import override
 
-from rf_protocols import RadioFrequencyCommand
-
+from hackrf_proxy_client import ProxyClient, ProxyError
 from homeassistant.components.radio_frequency import RadioFrequencyTransmitterEntity
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from rf_protocols import RadioFrequencyCommand
 
 from . import HackrfProxyConfigEntry
-from hackrf_proxy_client import ProxyClient, ProxyError
 from .const import DOMAIN, FREQUENCY_RANGE
 
 _LOGGER = logging.getLogger(__name__)

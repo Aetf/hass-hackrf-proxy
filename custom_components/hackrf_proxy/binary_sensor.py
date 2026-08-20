@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import override
 
+from hackrf_proxy_client import ProxyClient
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
     BinarySensorEntity,
@@ -12,7 +13,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import HackrfProxyConfigEntry
-from hackrf_proxy_client import ProxyClient
 from .entity import ProxyDiagnosticEntity
 
 

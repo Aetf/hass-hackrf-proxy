@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+from hackrf_proxy_client import ProxyClient
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import EntityCategory
 from homeassistant.core import callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import Entity
 
-from hackrf_proxy_client import ProxyClient
 from .const import DOMAIN
 
 

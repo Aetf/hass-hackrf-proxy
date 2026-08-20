@@ -10,10 +10,9 @@ from homeassistant.config_entries import SOURCE_USER
 from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.hackrf_proxy.const import DOMAIN
-
-from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 GOOD_STATUS = {
     "type": "status",

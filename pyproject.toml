@@ -15,3 +15,9 @@ reportUnusedCallResult = false
 # properties by design, and several third-party deps ship no stubs.
 reportIncompatibleVariableOverride = false
 reportMissingTypeStubs = false
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]

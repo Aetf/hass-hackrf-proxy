@@ -90,14 +90,40 @@ about the radio rather than about any one consumer.
 Only `status` is polled, once a minute, and it is answered from the daemon's
 own bookkeeping without touching the radio or the air.
 
-### Receiving
+## Receiving, and the roadmap
 
-Until an upstream receiver platform exists, every frame the daemon hears is
-re-broadcast on the dispatcher signal `hackrf_proxy_rx_frame_{entry_id}`,
-with the daemon's `rx_frame` payload verbatim. That payload is deliberately
-the shape a future receiver entity would carry, so consumers migrate with
-little churn. [hass-proflame](https://github.com/Aetf/hass-proflame) is the
-first consumer of both paths.
+Transmitting rides the standard: the entity is an ordinary `radio_frequency`
+transmitter, and any consumer integration finds it the ordinary way.
+**Receiving does not, yet, because Home Assistant has nothing to ride** — the
+`radio_frequency` platform is transmit-only so far, with a receiver platform
+sketched upstream ([architecture #1365]) but not built.
+
+Until it exists, this integration bridges the gap itself: every frame the
+daemon hears is re-broadcast on the dispatcher signal
+`hackrf_proxy_rx_frame_{entry_id}`, with the daemon's `rx_frame` payload
+verbatim. Two things about that bridge are deliberate:
+
+- **It is a private contract, and documented as one.** Consumers subscribe to
+  a signal by name instead of discovering a receiver entity; that is the
+  non-standard part, and it is confined to this one seam.
+  [hass-proflame](https://github.com/Aetf/hass-proflame) is the first
+  consumer.
+- **The payload is the shape the upstream sketch describes** — frequency, raw
+  timings, RSSI, timestamp — so when a real receiver platform lands, this
+  integration grows a receiver entity and consumers migrate with little
+  churn.
+
+Roadmap, in order:
+
+1. Replace the dispatcher bridge with a receiver entity the moment an
+   upstream receiver platform exists, and deprecate the signal.
+2. Track daemon-side authentication when it lands (a wire-protocol major
+   bump); the config flow already refuses protocol versions it does not
+   speak.
+3. Aim the transmitter at Home Assistant core once the receiver story is
+   standard and the wire protocol has been stable across releases.
+
+[architecture #1365]: https://github.com/home-assistant/architecture/discussions/1365
 
 ## License
 

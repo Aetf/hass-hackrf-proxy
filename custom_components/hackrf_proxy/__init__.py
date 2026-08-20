@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from hackrf_proxy_client import ProxyClient
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST, CONF_PORT, Platform
 from homeassistant.core import HomeAssistant
@@ -16,7 +17,6 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 
-from hackrf_proxy_client import ProxyClient
 from .const import SIGNAL_RX_FRAME
 
 type HackrfProxyConfigEntry = ConfigEntry[ProxyClient]
